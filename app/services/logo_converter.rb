@@ -38,7 +38,6 @@ class LogoConverter
 
   def convert_image(image)
     # resize the image to 100x100
-    require 'pry'; binding.pry
     image.sample!(100, 100)
     table = CSV.read(('public/jakesSuperColors.csv'), headers: true)
 
@@ -49,7 +48,6 @@ class LogoConverter
                      :alpha => pixel.to_hsla[3],
                      :record_num => "#{standardized_light(pixel)}.#{standardized_hue(pixel)}" }
 
-      binding.pry
       # find the closest match in the table
       hex_code = ''
       table.each do |row|
