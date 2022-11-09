@@ -1,0 +1,9 @@
+<h1>Upload Logos Here</h1>
+<%= form_with model: @logo, method: "post" do |f| %>
+    <%= f.label :name, placeholder: 'Enter logo name here' %>
+    <%= f.text_field :name %>
+    <%= f.label :posterization_level, placeholder: 'Enter desired posterization level' %>
+    <%= f.text_field :posterization_level  %>
+    <%= f.file_field :image %>
+    <%= f.submit "Submit" %>
+<% end %>

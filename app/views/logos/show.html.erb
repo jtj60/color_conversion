@@ -1,0 +1,24 @@
+<h1>Logos</h1>
+<% @logos.each do |logo| %> 
+    <p>File Name: <%=logo.file_name%> </p>
+
+    <p>Original Input:</p>
+    <%= image_tag logo.image.variant(resize: '100x100') %>
+    <p>Unique Pixel Count: <%=logo.find_unique_colors(logo.file_path)%> </p>
+
+    <p>Sampled:</p>
+    <%= image_tag logo.image.variant(sample: '100x100') %>
+    <p>Unique Pixel Count: </p> <%=logo.find_unique_colors(ActiveStorage::Blob.service.path_for(logo.image.variant(sample: '100x100').key))%>
+
+    <p>Posterized 4 and Sampled:</p>
+    <%= image_tag logo.image.variant(posterize: 4, sample: '100x100') %>
+    <p>Unique Pixel Count: <%=logo.find_unique_colors(ActiveStorage::Blob.service.path_for(logo.image.variant(posterize: 4, sample: '100x100').key))%> </p>
+
+    <p>Posterized 3 and Sampled:</p>
+    <%= image_tag logo.image.variant(posterize: 3, sample: '100x100') %>
+    <p>Unique Pixel Count: <%=logo.find_unique_colors(ActiveStorage::Blob.service.path_for(logo.image.variant(posterize: 3, sample: '100x100').key))%> </p>
+
+    <p>Posterized 2 and Sampled:</p>
+    <%= image_tag logo.image.variant(posterize: 2, sample: '100x100') %>
+    <p>Unique Pixel Count: <%=logo.find_unique_colors(ActiveStorage::Blob.service.path_for(logo.image.variant(posterize: 2, sample: '100x100').key))%> </p>
+<% end %>

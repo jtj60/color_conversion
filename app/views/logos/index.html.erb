@@ -1,0 +1,37 @@
+<h1 style="font-size:14px;">Logos</h1>
+<% @logos.each do |logo| %> 
+    <p style="font-size:14px;">Name: <%= logo.name %> </p>
+    
+
+    <span> 
+        <p style="font-size:14px;">Original Input: </p>
+        <%= image_tag(logo.image.variant(sample: '100x100')) %> 
+        <p style="font-size:12px;">Unique Color Count:
+        <%= logo.unique_colors_count(logo.image) %> </p>
+    </span>
+  
+    <span> 
+        <p style="font-size:14px;">Original Input Converted: </p>
+        <%= image_tag(logo.image_converted.variant(sample: '100x100')) %>
+        <p style="font-size:12px;">Unique Color Count:
+        <%= logo.unique_colors_count(logo.image_converted) %> </p>
+    </span>
+    
+    <!--
+    <span> 
+        <p style="font-size:14px;">Posterized: </p>
+        <%# <%= image_tag(logo.posterized_image.variant(sample: '100x100')) %>  %>
+        <p style="font-size:12px;">Unique Color Count:
+        <%# <%= logo.unique_colors_count(logo.posterized_image) %> </p> %>
+    </span>
+
+    <span> 
+        <p style="font-size:14px;">Posterized Converted: </p>
+        <%# <%= image_tag(logo.posterized_image_converted.variant(sample: '100x100')) %>  %>
+        <p style="font-size:12px;">Unique Color Count:
+        <%# <%= logo.unique_colors_count(logo.posterized_image_converted) %> </p> %>
+    </span>
+    -->
+
+    <%= link_to 'Upload New Image', upload_path, class: 'button alt' %>
+<% end %>
